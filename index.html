@@ -1,34 +1,74 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>`Tic tac Toe`</title>
-    <link rel="stylesheet" href="style.css" type="text/css" media="all" />
-</head>
-<body>
-    <div class="win hide">
-        <p class="msg">
-            Winner 
-        </p>
-            <button class="newBtn" type="submit">Restart Game</button>
-    </div>
-    <main>
-        <h3>Tic Tac Toe</h3>
-        <div class="container">
-            <div class="Game">
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-            </div>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      :root {
+        --bg-color: #f0f2f5;
+        --container-bg: rgba(255, 255, 255, 0.9);
+        --cell-bg: rgba(255, 255, 255, 0.8);
+        --text-color: #333;
+        --shadow-color: rgba(0, 0, 0, 0.1);
+        --input-bg: rgba(0, 0, 0, 0.1);
+        --button-bg: #74b9ff;
+        --button-text: white;
+        --x-color: #ff7675;
+        --o-color: #00b894;
+        --neon-x: rgba(255, 105, 180, 0.7);
+        --neon-o: rgba(105, 255, 200, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="confetti" id="confetti"></div>
+    <div class="container">
+      <div class="title-container">
+        <h1>Tic Tac Toe</h1>
+        <span class="theme-toggle" id="theme-toggle">
+          <i class="fa-solid fa-sun"></i>
+        </span>
+      </div>
+      <div class="setup" id="setup">
+        <input type="text" id="player-x" placeholder="Player X Name" />
+        <input type="text" id="player-o" placeholder="Player O Name" />
+        <div class="buttons">
+          <button id="start">Start Game</button>
+          <button id="skip">Skip</button>
         </div>
-    </main>
-    <button class="reset" type="submit">Reset Game</button>
-    <script src="app.js" type="text/javascript" charset="utf-8"></script>
-</body>
+      </div>
+      <div class="game" id="game" style="display: none">
+        <div class="scoreboard">
+          <div class="score" id="x-score">
+            <span class="neon-name" id="x-name">Player X</span>: 0
+          </div>
+          <div class="score">Draws: <span id="draws">0</span></div>
+          <div class="score" id="o-score">
+            <span class="neon-name o" id="o-name">Player O</span>: 0
+          </div>
+        </div>
+        <div class="status" id="status">Player X's turn</div>
+        <div class="board" id="board">
+          <div class="cell" data-index="0"></div>
+          <div class="cell" data-index="1"></div>
+          <div class="cell" data-index="2"></div>
+          <div class="cell" data-index="3"></div>
+          <div class="cell" data-index="4"></div>
+          <div class="cell" data-index="5"></div>
+          <div class="cell" data-index="6"></div>
+          <div class="cell" data-index="7"></div>
+          <div class="cell" data-index="8"></div>
+        </div>
+        <div class="game-buttons">
+          <button id="new-game">New Game</button>
+          <button id="reset-all">Reset All</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>

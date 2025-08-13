@@ -1,68 +1,173 @@
-.*{
-    margin: 0;
-    padding: 0;
-    font-style: Times New Roman;
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background: var(--bg-color);
+  color: var(--text-color);
+  overflow: hidden;
+  transition: all 0.5s;
 }
-body{
-    text-align: center;
-    background-color:#548587;
-    font-family: Times New Roman;
+body.dark {
+  --bg-color: #121212;
+  --container-bg: rgba(0, 0, 0, 0.7);
+  --cell-bg: rgba(255, 255, 255, 0.1);
+  --text-color: #f0f2f5;
+  --shadow-color: rgba(255, 255, 255, 0.1);
+  --input-bg: rgba(255, 255, 255, 0.1);
+  --button-bg: #0984e3;
+  --button-text: white;
 }
-.container{
-    height: 70vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.container {
+  text-align: center;
+  background: var(--container-bg);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px var(--shadow-color);
+  max-width: 450px;
+  width: 90%;
 }
-.Game{
-    height: 60vmin;
-    width: 60vmin;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 1.5vmin;
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
-.box{
-    height: 18vmin;
-    width:18vmin ;
-    border-radius: 12px;
-    border: none;
-    box-shadow: 0 0 1rem black;
-    font-size: 10vmin;
-    background-color: #D98CFF;
-    color: #b0413e;
+.theme-toggle {
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--text-color);
+  background: none;
+  border: none;
+  justify-content: end;
 }
+h1 {
+  margin: 10px 0;
+  font-size: 2.2rem;
+}
+.setup {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+input {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: var(--input-bg);
+  color: var(--text-color);
+  font-size: 16px;
+  text-align: center;
+  outline: none;
+  width: 180px;
+}
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  background: var(--button-bg);
+  color: var(--button-text);
+}
+.scoreboard {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px auto;
+  font-size: 16px;
+  font-weight: bold;
+  width: 100%;
+}
+.score {
+  padding: 8px 16px;
+  background: var(--input-bg);
+  border-radius: 8px;
+}
+/* .neon-name {
+  text-shadow: 0 1 6px var(--neon-x);
+}
+.neon-name.o {
+  text-shadow: 0 0 6px var(--neon-o);
+} */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  grid-template-rows: repeat(3, 80px);
+  gap: 10px;
+  margin: 20px auto;
 
-.reset{
-    background-color: #191913;
-    color: white;
-    border-radius:5px;
-    border: none;
-    font-size: 1.25rem;.
+  justify-content: center;
 }
-
-.win{
-    height:;
+.cell {
+  width: 80px;
+  height: 80px;
+  background: var(--cell-bg);
+  border: none;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  color: var(--text-color);
+  /* box-shadow: 20px 20px 60px  #0000003c, inset -20px -20px 60px #ffffff42; */
 }
-
-.msg{
-    font-size: 50px;
+.cell:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
-
-.newBtn{
-        background-color: #191913;
-    color: white;
-    border-radius:5px;
-    border: none;
-    font-size: 1.75rem;
+.cell.x {
+  color: var(--x-color);
 }
-
-.hide{
-    display: none;
+.cell.o {
+  color: var(--o-color);
 }
-h3{
-    font-size: 50px;
-  /* box-shadow: 0 0 1vmin black;*/
-    text-shadow: 0 0 2px #B86EDA;
+.status {
+  margin: 20px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+.game-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+.confetti {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: none;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.7);
+}
+@keyframes bounce {
+  0% {
+    transform: scale(0.1);
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.cell.x,
+.cell.o {
+  animation: bounce 0.2s;
 }
