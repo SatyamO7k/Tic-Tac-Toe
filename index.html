@@ -31,16 +31,16 @@
           <i class="fa-solid fa-sun"></i>
         </span>
       </div>
-      <div class="setup" id="setup">
-        <input type="text" id="player-x" placeholder="Player X Name" />
-        <input type="text" id="player-o" placeholder="Player O Name" />
+      <div class="setup" id="setup" action="connect.php" method="post">
+        <input type="text" id="player-x" placeholder="Player X Name" name="player-x" />
+        <input type="text" id="player-o" placeholder="Player O Name" name="player-o"/>
         <div class="buttons">
           <button id="start">Start Game</button>
           <button id="skip">Skip</button>
         </div>
       </div>
       <div class="game" id="game" style="display: none">
-        <div class="scoreboard">
+        <div class="scoreboard" >
           <div class="score" id="x-score">
             <span class="neon-name" id="x-name">Player X</span>: 0
           </div>
